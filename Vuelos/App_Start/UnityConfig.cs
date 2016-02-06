@@ -49,6 +49,11 @@ namespace Vuelos.App_Start
             container.RegisterType<ICiudadBLL, CiudadBLL>();
             container.RegisterType<IVueloBLL, VueloBLL>();
             container.RegisterType<ITripulanteBLL, TripulanteBLL>();
+            
+            container.RegisterType<DbContext, ApplicationDbContext>(new HierarchicalLifetimeManager());
+            container.RegisterType<UserManager<ApplicationUser>>(new HierarchicalLifetimeManager());
+            container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>(new HierarchicalLifetimeManager());
+            container.RegisterType<AccountController>(new InjectionConstructor());
         }
     }
 }
