@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="D:\Archivos\Personales\Cibertec\Web App Dev VS2013\Proyecto\vuelossite\Vuelos.UnitTest\Vuelos.UnitTest.csproj" total="2" errors="1" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2016-02-06" time="11:08:52">
+  <environment nunit-version="2.6.4.14350" clr-version="2.0.50727.5420" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="D:\Archivos\Personales\Cibertec\Web App Dev VS2013\Proyecto\vuelossite" machine-name="ERIC-PC" user="ERIC" user-domain="ERIC-PC" />
+  <culture-info current-culture="es-PE" current-uiculture="es-ES" />
+  <test-suite type="Project" name="D:\Archivos\Personales\Cibertec\Web App Dev VS2013\Proyecto\vuelossite\Vuelos.UnitTest\Vuelos.UnitTest.csproj" executed="True" result="Failure" success="False" time="0.314" asserts="0">
+    <results>
+      <test-suite type="Assembly" name="D:\Archivos\Personales\Cibertec\Web App Dev VS2013\Proyecto\vuelossite\Vuelos.UnitTest\bin\Debug\Vuelos.UnitTest.dll" executed="True" result="Failure" success="False" time="0.306" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="Vuelos" executed="True" result="Failure" success="False" time="0.306" asserts="0">
+            <results>
+              <test-suite type="Namespace" name="UnitTest" executed="True" result="Failure" success="False" time="0.306" asserts="0">
+                <results>
+                  <test-suite type="TestFixture" name="VueloBLLTest" executed="True" result="Failure" success="False" time="0.292" asserts="0">
+                    <results>
+                      <test-case name="Vuelos.UnitTest.VueloBLLTest.CrearTestFail" executed="True" result="Error" success="False" time="0.238" asserts="0">
+                        <failure>
+                          <message><![CDATA[System.Exception : La ciudad origen y ciudad destino deben ser distintas.]]></message>
+                          <stack-trace><![CDATA[en Vuelos.ReglasNegocio.VueloBLL.Crear(Vuelo Model) en d:\Archivos\Personales\Cibertec\Web App Dev VS2013\Archivos\Proyecto\Vuelos\Vuelos.ReglasNegocio\VueloBLL.cs:línea 38
+en Vuelos.UnitTest.VueloBLLTest.CrearTestFail() en d:\Archivos\Personales\Cibertec\Web App Dev VS2013\Proyecto\vuelossite\Vuelos.UnitTest\VueloBLLTest.cs:línea 53
+]]></stack-trace>
+                        </failure>
+                      </test-case>
+                      <test-case name="Vuelos.UnitTest.VueloBLLTest.CrearTestOK" executed="True" result="Success" success="True" time="0.038" asserts="0" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

@@ -1,0 +1,1 @@
+cinst VuelosSite -source .\Build -f -y -packageParameters '"/Destination:C:\inetpub\wwwroot\VuelosSite /AppName:Default Web Site\VuelosSite /UserName:eric /Password:cruiserprado "'
