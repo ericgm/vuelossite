@@ -1,0 +1,112 @@
+﻿@*@model IEnumerable<Vuelos.Entidades.Aerolinea>*@
+@model Vuelos.ViewModels.AerolineaData
+
+@{
+    ViewBag.Title = "Aerolineas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Listado de Aerol&iacute;neas</h2>
+
+<p>
+    @Html.ActionLink("Nueva Aerolinea", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.NombreComercial)*@
+            Nombre Comercial
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.FechaCreacion)*@
+            Fecha Creacion
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Director)*@
+            Director
+        </th>
+        <th>
+            Vuelos
+        </th>
+        <th>
+            Tripulacion
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Aerolineas) 
+{
+    String filaSeleccionada = "";
+    if (item.AerolineaID == ViewBag.AerolineaID)
+    {
+        filaSeleccionada = "success";
+    }
+    
+    <tr class="@filaSeleccionada">
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreComercial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaCreacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Director)
+        </td>
+        <td>
+            @{
+                foreach (var vuelo in item.Vuelos)
+                {
+                    @vuelo.NumeroVuelo <br />
+                }
+            }
+        </td>
+        <td>
+            @{
+                foreach (var tripulante in item.Tripulantes)
+                {
+                    @tripulante.Nombre <br />
+                }
+            }
+        </td>
+
+        <td>
+            @Html.ActionLink("Seleccionar", "Index", new { id = item.AerolineaID }) |
+            @Html.ActionLink("Editar", "Edit", new { id = item.AerolineaID }) |
+            @Html.ActionLink("Detalle", "Details", new { id = item.AerolineaID }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.AerolineaID })
+        </td>
+    </tr>
+}
+
+</table>
+
+@if (Model.Vuelos != null)
+{
+    <h2>Vuelos de la Aerolinea @Model.Vuelos.First().Aerolinea.NombreComercial</h2>
+    
+    <table class="table">
+        <tr>
+            <th>Nro</th>
+            <th>Fecha</th>
+            <th>Origen</th>
+            <th>Destino</th>
+        </tr>
+    @foreach (var item in Model.Vuelos)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroVuelo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaVuelo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CiudadOrigen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CiudadDestino)
+            </td>
+        </tr>
+    }
+    </table>
+}
