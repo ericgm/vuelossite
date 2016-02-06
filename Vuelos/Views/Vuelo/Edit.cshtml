@@ -1,0 +1,75 @@
+﻿@model Vuelos.Entidades.Vuelo
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Vuelo</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.VueloID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NumeroVuelo, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NumeroVuelo)
+                @Html.ValidationMessageFor(model => model.NumeroVuelo)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FechaVuelo, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FechaVuelo)
+                @Html.ValidationMessageFor(model => model.FechaVuelo)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CiudadOrigen, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("CiudadOrigen", String.Empty)
+                @Html.ValidationMessageFor(model => model.CiudadOrigen)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CiudadDestino, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("CiudadDestino", String.Empty)
+                @Html.ValidationMessageFor(model => model.CiudadDestino)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AerolineaID, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("AerolineaID", String.Empty)
+                @Html.ValidationMessageFor(model => model.AerolineaID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Regresar a Lista", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

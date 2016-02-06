@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Vuelos.Entidades.Vuelo>
+
+@{
+    ViewBag.Title = "Vuelos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Listado de Vuelos</h2>
+
+<p>
+    @Html.ActionLink("Nuevo Vuelo", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Filtrar Aerolinea: @Html.DropDownList("FiltroAerolinea", "[Todos]")
+    </p>
+    <input type="submit" value="Filtrar" />
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NumeroVuelo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaVuelo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CiudadOrigen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CiudadDestino)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aerolinea.NombreComercial)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroVuelo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaVuelo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CiudadOrigen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CiudadDestino)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aerolinea.NombreComercial)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.VueloID }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.VueloID }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.VueloID })
+        </td>
+    </tr>
+}
+
+</table>
