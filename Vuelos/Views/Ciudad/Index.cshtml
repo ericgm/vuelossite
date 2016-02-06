@@ -1,0 +1,131 @@
+﻿@model IEnumerable<Vuelos.Entidades.Ciudad>
+
+@{
+    ViewBag.Title = "Destino";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+
+    @Styles.Render("~/Kendo/styles/kendo.common.css")
+    @Styles.Render("~/Kendo/styles/kendo.silver.css")
+}
+
+<h2>Listado de Destinos</h2>
+
+<p>
+    @Html.ActionLink("Nuevo Destino", "Create")
+</p>
+
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CiudadID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CiudadID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.CiudadID }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.CiudadID }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.CiudadID })
+        </td>
+    </tr>
+}
+
+</table>*@
+
+<div class="container">
+    <div class="row">
+        Buscar Ciudad:
+        <input type="text" id="txtbuscar" autofocus="autofocus" />
+        <button id="btnCargar" type="button">Buscar</button>
+    </div>
+    <div class="row">
+        <div id="gridCiudad"></div>
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/Kendo/js/kendo.all.min.js")
+
+    <script>        
+        $(document).on("ready", function () {
+            $("#gridCiudad").kendoGrid({
+                columns: [
+                    { title: 'Codigo', field: 'Codigo' },
+                    { title: 'Ciudad', field: 'Ciudad' }
+                ],
+                autoBind: true,
+                dataSource: new kendo.data.DataSource({
+                    dataType: "json",
+                    transport: {
+                        read: {
+                            type: "POST",
+                            url: "Ciudad/Busqueda",
+                            data: {
+                                filtro: function () {
+                                    return $("#txtbuscar").val();
+                                }
+                            }
+                        }
+                    },
+                    schema: {
+                        data: function (ciudades) {
+                            return ciudades.items;
+                        }
+                    }
+                })
+            });
+
+            $("#btnCargar").on("click", function () {
+                $("#gridCiudad").data("kendoGrid").dataSource.read();
+            });
+
+            $("#txtbuscar").on("keypress", function (event) {
+                if (event.which === 13) {
+                    event.preventDefault();
+                    $("#btnCargar").click();
+                }
+            });
+        });
+    </script>
+}
+
+@*$(document).ready(function () {
+    $("#btnCargar").on("click", function () {
+        var defer = $.post("/Ciudad/Todos", null);
+        defer.done(function (ciudades) {
+            $("#gridCiudad").kendoGrid({
+                columns: [
+                    { title: 'Codigo',  field: "CiudadID" },
+                    { title: 'Ciudad',  field: "Nombre" }
+                ],
+                autoBind: true,
+                //groupable: true,
+                sortable: true,
+                pageable: {
+                    refresh: true,
+                    pageSizes: true,
+                    buttonCount: 5
+                },
+                dataSource: {
+                    data: ciudades
+                }
+            });
+        });
+        defer.fail(function () { });
+        defer.always(function () { });
+    });            
+});*@
