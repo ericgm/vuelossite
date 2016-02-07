@@ -56,6 +56,7 @@ namespace Vuelos.Controllers
         }
 
         // GET: /Vuelo/Create
+        [Authorize]
         public ActionResult Create()
         {
             var aerolineas = aerolineaBLL.Listar();
@@ -71,6 +72,7 @@ namespace Vuelos.Controllers
         // POST: /Vuelo/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include="VueloID,NumeroVuelo,FechaVuelo,CiudadOrigen,CiudadDestino,AerolineaID")] Vuelo vuelo)
         {
             try
@@ -97,6 +99,7 @@ namespace Vuelos.Controllers
         }
 
         // GET: /Vuelo/Edit/5
+        [Authorize]
         public ActionResult Edit(Int32? Id)
         {
             if (Id == null)
@@ -124,6 +127,7 @@ namespace Vuelos.Controllers
         [HttpPost]
         [ActionName("Edit")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult EditPost(Int32? Id)
         {
             if (Id == null)
@@ -159,6 +163,7 @@ namespace Vuelos.Controllers
         }
 
         // GET: /Vuelo/Delete/5
+        [Authorize]
         public ActionResult Delete(Int32? Id)
         {
             if (Id == null)
@@ -179,6 +184,7 @@ namespace Vuelos.Controllers
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeletePost(Int32? Id)
         {
             if (Id == null)
