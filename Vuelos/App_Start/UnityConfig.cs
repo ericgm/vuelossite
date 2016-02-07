@@ -3,6 +3,11 @@ using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 using Vuelos.AccesoDatos;
 using Vuelos.ReglasNegocio;
+using System.Data.Entity;
+using Microsoft.AspNet.Identity;
+using Vuelos.Controllers;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Vuelos.Models;
 
 namespace Vuelos.App_Start
 {
