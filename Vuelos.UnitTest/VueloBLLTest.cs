@@ -15,7 +15,7 @@ namespace Vuelos.UnitTest
     public class VueloBLLTest
     {
         [Test]
-        public void CrearTestOK()
+        public void CrearTestCiudadDiferente()
         {
             var modelo = new Vuelo();
             modelo.NumeroVuelo = "Vuelo1";
@@ -34,7 +34,7 @@ namespace Vuelos.UnitTest
         }
 
         [Test]
-        public void CrearTestFail()
+        public void CrearTestCiudadIgual()
         {
             var modelo = new Vuelo();
             modelo.NumeroVuelo = "Vuelo1";
@@ -53,7 +53,7 @@ namespace Vuelos.UnitTest
                 bll.Crear(modelo);
                 Assert.Fail("Ciudad y Destinos deben ser diferentes.");
             }
-            catch (ApplicationException ex)
+            catch (Exception ex)
             {
                 
             }
