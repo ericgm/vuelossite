@@ -64,6 +64,7 @@ namespace Vuelos.Controllers
         }
 
         // GET: /Ciudad/Create
+        [Authorize]
         public ActionResult Create()
         {
             return this.View();
@@ -72,6 +73,7 @@ namespace Vuelos.Controllers
         // POST: /Ciudad/Create
         [ValidateAntiForgeryToken]
         [HttpPost]
+        [Authorize]
         public ActionResult Create([Bind(Include = "CiudadID,Nombre")] Ciudad Model)
         {
             try
@@ -91,6 +93,7 @@ namespace Vuelos.Controllers
         }
 
         // GET: /Ciudad/Edit/CIX
+        [Authorize]
         public ActionResult Edit(String Id)
         {
             if (String.IsNullOrEmpty(Id))
@@ -111,6 +114,7 @@ namespace Vuelos.Controllers
         [ActionName("Edit")]
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult EditPost(String Id)
         {
             if (String.IsNullOrEmpty(Id))
@@ -139,6 +143,7 @@ namespace Vuelos.Controllers
         }
 
         // GET: Ciudad/Delete/CIX
+        [Authorize]
         public ActionResult Delete(String Id)
         {
             if (String.IsNullOrEmpty(Id))
@@ -159,6 +164,7 @@ namespace Vuelos.Controllers
         [ActionName("Delete")]
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeletePost(String Id)
         {
             if (String.IsNullOrEmpty(Id))
