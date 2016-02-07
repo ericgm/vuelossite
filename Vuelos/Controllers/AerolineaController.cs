@@ -60,6 +60,7 @@ namespace Vuelos.Controllers
         }
 
         // GET: /Aerolinea/Create
+        [Authorize]
         public ActionResult Create()
         {
             Aerolinea aerolinea = new Aerolinea();
@@ -77,6 +78,7 @@ namespace Vuelos.Controllers
         // POST: /Aerolinea/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include="AerolineaID,NombreComercial,FechaCreacion,Director")] Aerolinea aerolinea, String[] tripulantesSeleccionados)
         {
             if (tripulantesSeleccionados != null)
@@ -127,6 +129,7 @@ namespace Vuelos.Controllers
         }
 
         // GET: /Aerolinea/Edit/5
+        [Authorize]
         public ActionResult Edit(int? Id)
         {
             if (Id == null)
@@ -163,6 +166,7 @@ namespace Vuelos.Controllers
         // POST: /Aerolinea/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit(Int32? Id, String[] tripulantesSeleccionados)
         {
             if (Id == null)
@@ -220,6 +224,7 @@ namespace Vuelos.Controllers
         }
 
         // GET: /Aerolinea/Delete/5
+        [Authorize]
         public ActionResult Delete(int? Id)
         {
             if (Id == null)
@@ -239,6 +244,7 @@ namespace Vuelos.Controllers
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeletePost(Int32? Id)
         {
             if (Id == null)
