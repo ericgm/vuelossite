@@ -54,6 +54,7 @@ namespace Vuelos.Controllers
         }
 
         // GET: /Tripulante/Create
+        [Authorize]
         public ActionResult Create()
         {
             var vuelos = vueloBLL.Listar(null);
@@ -65,6 +66,7 @@ namespace Vuelos.Controllers
         // POST: /Tripulante/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include="TripulanteID,Nombre,Email,VueloID")] Tripulante tripulante)
         {
             try
@@ -87,6 +89,7 @@ namespace Vuelos.Controllers
         }
 
         // GET: /Tripulante/Edit/5
+        [Authorize]
         public ActionResult Edit(Int32? Id)
         {
             if (Id == null)
@@ -110,6 +113,7 @@ namespace Vuelos.Controllers
         [HttpPost]
         [ActionName("Edit")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult EditPost(Int32? Id)
         {
             if (Id == null)
@@ -141,6 +145,7 @@ namespace Vuelos.Controllers
         }
 
         // GET: /Tripulante/Delete/5
+        [Authorize]
         public ActionResult Delete(Int32? Id)
         {
             if (Id == null)
@@ -161,6 +166,7 @@ namespace Vuelos.Controllers
         [ActionName("Delete")]
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeletePost(Int32? Id)
         {
             if (Id == null)
